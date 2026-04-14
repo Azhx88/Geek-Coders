@@ -1059,6 +1059,51 @@
     .team-grid .tc:first-child {
       max-height: none;
     }
+  
+    /* Internship card mobile fix */
+    @media (max-width: 768px) {
+      .ach-card {
+        flex-direction: column !important;
+        min-height: auto !important;
+      }
+      .ach-img {
+        width: 100% !important;
+        height: 250px !important;
+        position: relative !important;
+      }
+      .ach-info {
+        position: relative !important;
+        padding: 2rem 1.5rem !important;
+        width: 100% !important;
+      }
+      .ach-gradient-overlay {
+        display: none !important;
+      }
+    }
+  
+    /* Mobile: center about + CTA */
+    @media (max-width: 768px) {
+      .combined-about-cta {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      .combined-about-cta > div[style*="flex: 1"] {
+        align-items: center !important;
+        text-align: center !important;
+        padding: 4rem 2rem !important;
+        min-width: 100% !important;
+      }
+      .combined-about-cta .sec-title,
+      .combined-about-cta .cta-title {
+        text-align: center !important;
+      }
+      .combined-about-cta .sec-label {
+        align-self: center !important;
+      }
+      .combined-about-cta .cta-label {
+        text-align: center !important;
+      }
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 
@@ -1127,7 +1172,7 @@
 
         <!-- HERO IMAGE -->
 
-        <img src="cd.webp" alt="Geek Coders Hero"
+        <img src="cd.webp" loading="eager" fetchpriority="high" alt="Geek Coders Hero"
           style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
 
 
@@ -1152,7 +1197,7 @@
 
       <div class="hero-sub-line">
         <div class="hero-sub-divider"></div>
-        <span class="hero-sub-text">Tech Club &nbsp;·&nbsp; Est. 2018 &nbsp;·&nbsp; Your College</span>
+        <span class="hero-sub-text">Tech Club &nbsp;·&nbsp; Est. 2018 &nbsp;·&nbsp; KRCT</span>
         <div class="hero-sub-divider"></div>
       </div>
     </div>
@@ -1228,7 +1273,7 @@
     <div class="sec-header">
       <div>
         <div class="sec-label reveal">Hall of Fame</div>
-        <h2 class="sec-title reveal d1">OUR<br><em>EVENTS</em></h2>
+        <h2 class="sec-title scramble-allowed reveal d1">OUR<br><em>EVENTS</em></h2>
       </div>
 
     </div>
@@ -1237,14 +1282,14 @@
 
       <div class="ach-card reveal">
         <div class="ach-img">
-          <img src="cd2.webp" alt="DBA Internship">
+          <img src="cd2.webp" loading="lazy" decoding="async" alt="DBA Internship">
         </div>
         <div class="ach-gradient-overlay"></div>
         <div class="ach-info">
           <div class="ac-num">01</div>
           <div class="ac-year">2024</div>
           <div class="ac-title">The DBA INTERNSHIP</div>
-          <div class="ac-desc">5 days a special resource person came from G-Tech Solutions blah blah...</div>
+          <div class="ac-desc">An intensive 5-day hands-on internship program conducted by industry experts from G-Tech Solutions. Students mastered Database Administration fundamentals including SQL optimization, backup strategies, and real-world enterprise database management practices.</div>
           <span class="ac-tag">Internship</span>
         </div>
       </div>
@@ -1257,7 +1302,7 @@
     <div class="team-top">
       <div>
         <div class="sec-label reveal">Core Team</div>
-        <h2 class="sec-title reveal d1">THE <em>CREW</em></h2>
+        <h2 class="sec-title scramble-allowed reveal d1">THE <em>CREW</em></h2>
       </div>
       <div class="team-count reveal">06 / Members</div>
     </div>
@@ -1266,7 +1311,7 @@
 
       <div class="tc reveal">
         <div class="tc-img">
-          <img src="cd3.webp" alt="ASHWIN - President" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd3.webp" loading="lazy" decoding="async" alt="ASHWIN - President" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         <div class="tc-info" style="position: relative; overflow: hidden;">
@@ -1274,7 +1319,7 @@
             style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.85;">
           </div>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">ASHWIN</div>
+            <div class="tc-name scramble-allowed">ASHWIN</div>
             <div class="tc-role">President</div>
             <p class="tc-bio"
               style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
@@ -1288,14 +1333,14 @@
       
       <div class="tc reveal d1">
         <div class="tc-img">
-          <img src="cd4.webp" alt="SURIYAA" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd4.webp" loading="lazy" decoding="async" alt="SURIYAA" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
         <div class="tc-info" style="position: relative; overflow: hidden;">
           <canvas class="crewSmokeCanvas" data-color="0.9, 0.2, 0.5" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.7;"></canvas>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">SURIYAA</div>
+            <div class="tc-name scramble-allowed">SURIYAA</div>
             <div class="tc-role">Vice President</div>
             <p class="tc-bio" style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
               Driving strategic initiatives and ensuring operational excellence across all club activities. Focused on expanding our reach and fostering an inclusive coding environment.
@@ -1306,14 +1351,14 @@
 
       <div class="tc reveal d2">
         <div class="tc-img">
-          <img src="cd7.webp" alt="HEM CHUDESH" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd7.webp" loading="lazy" decoding="async" alt="HEM CHUDESH" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
         <div class="tc-info" style="position: relative; overflow: hidden;">
           <canvas class="crewSmokeCanvas" data-color="0.2, 0.4, 1.0" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.7;"></canvas>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">HEM CHUDESH</div>
+            <div class="tc-name scramble-allowed">HEM CHUDESH</div>
             <div class="tc-role">Secretary</div>
             <p class="tc-bio" style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
               Mastermind of organization and communication. Keeps the core team synchronized and maintains the extensive documentation required to run high-level technical events.
@@ -1324,14 +1369,14 @@
 
       <div class="tc reveal d2">
         <div class="tc-img">
-          <img src="cd8.webp" alt="VIHAS" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd8.webp" loading="lazy" decoding="async" alt="VIHAS" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
         <div class="tc-info" style="position: relative; overflow: hidden;">
           <canvas class="crewSmokeCanvas" data-color="1.0, 0.6, 0.0" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.7;"></canvas>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">VIHAS</div>
+            <div class="tc-name scramble-allowed">VIHAS</div>
             <div class="tc-role">Treasurer</div>
             <p class="tc-bio" style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
               Managing the financial backbone of Geek Coders. Ensuring sponsors, event budgets, and resources are perfectly aligned to maximize the value delivered to our members.
@@ -1342,14 +1387,14 @@
 
       <div class="tc reveal d3">
         <div class="tc-img">
-          <img src="cd4.webp" alt="JANANI" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd4.webp" loading="lazy" decoding="async" alt="JANANI" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
         <div class="tc-info" style="position: relative; overflow: hidden;">
           <canvas class="crewSmokeCanvas" data-color="0.7, 0.1, 1.0" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.7;"></canvas>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">JANANI</div>
+            <div class="tc-name scramble-allowed">JANANI</div>
             <div class="tc-role">Joint Treasurer</div>
             <p class="tc-bio" style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
               Crucial support in financial operations and resource allocation. Balancing the books while helping plan future investments for hackathons and workshops.
@@ -1360,14 +1405,14 @@
 
       <div class="tc reveal d3">
         <div class="tc-img">
-          <img src="cd6.webp" alt="THEJASRI" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd6.webp" loading="lazy" decoding="async" alt="THEJASRI" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
         <div class="tc-info" style="position: relative; overflow: hidden;">
           <canvas class="crewSmokeCanvas" data-color="1.0, 0.2, 0.2" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity: 0.7;"></canvas>
           <div style="position: relative; z-index: 2;">
-            <div class="tc-name">THEJASRI</div>
+            <div class="tc-name scramble-allowed">THEJASRI</div>
             <div class="tc-role">Deputy Document Head</div>
             <p class="tc-bio" style="font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(240, 237, 230, 0.6); margin-top: 1.5rem; max-width: 400px;">
               The archivist and technical writer. Ensuring every project, meeting, and technical milestone is perfectly documented for future generations of Geek Coders.
@@ -1385,7 +1430,7 @@
   <section class="section combined-about-cta" id="about" style="position: relative; min-height: 100vh; overflow: hidden; display: flex; flex-direction: row; align-items: stretch; justify-content: space-between; border-top: 1px solid rgba(240, 237, 230, 0.08); flex-wrap: wrap;">
     
     <!-- Animated Full Bleed Background restored properly -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: url('https://images.unsplash.com/photo-1432251407527-504a6b4174a2?q=80&w=1480&auto=format&fit=crop') center center; background-size: 150% 150%; animation: moveBackground 20s ease-in-out infinite alternate;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: url('https://images.unsplash.com/photo-1432251407527-504a6b4174a2?q=60&w=1200&auto=format&fit=crop') center center; background-size: 150% 150%; animation: moveBackground 20s ease-in-out infinite alternate;">
       <!-- Gradients -->
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 40vh; background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%); z-index: 1;"></div>
       <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40vh; background: linear-gradient(to top, var(--ink) 0%, transparent 100%); z-index: 1;"></div>
@@ -1402,9 +1447,7 @@
       </p>
     </div>
 
-    <!-- Right Side Divider lines up cleanly -->
-    <div style="position: relative; z-index: 3; width: 1px; background: rgba(255,255,255,0.1); margin: 6rem 0; display: block;"></div>
-
+    
     <!-- CTA Section Core (RIGHT SIDE) -->
     <div style="position: relative; z-index: 3; flex: 1; min-width: 350px; padding: 10rem 5%; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right;">
       <div class="cta-label reveal" style="text-transform: uppercase; font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.3em; margin-bottom: 2rem; color: #00ffcc; text-align: right;">Applications Open — Every Semester</div>
@@ -1420,7 +1463,7 @@
         <li><a href="#" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,237,230,0.35); text-decoration: none; transition: color 0.3s;">Instagram</a></li>
         <li><a href="#" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,237,230,0.35); text-decoration: none; transition: color 0.3s;">LinkedIn</a></li>
       </ul>
-      <div style="font-size: 11px; letter-spacing: 0.08em; color: rgba(240,237,230,0.25);">© 2025 · Your College Name</div>
+      <div style="font-size: 11px; letter-spacing: 0.08em; color: rgba(240,237,230,0.25);">© 2025 · KRCT · Designed by AZHX</div>
     </div>
   </section>
 
@@ -1736,7 +1779,7 @@ void main(){
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const headings = document.querySelectorAll('.sec-title, .cta-title, .hero-big-text');
+      const headings = document.querySelectorAll('.scramble-allowed, .hero-big-text');
       const scrambleObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting && !entry.target.dataset.scrambled) {
