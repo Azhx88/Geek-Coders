@@ -935,41 +935,95 @@
       /* Reduced translation for smoothness, needs wide content */
     }
 
-    /* Mobile Responsive For TC */
+    /* ============ ENHANCED MOBILE ============ */
     @media (max-width: 768px) {
-
-      .tc,
-      .tc:nth-child(even) {
-        flex-direction: column;
-        align-items: stretch;
-        min-height: 500px;
+      nav { padding: 1rem 1.5rem; padding-bottom: 2rem; }
+      .nav-links { display: none; }
+      
+      .hero-big-text { font-size: clamp(38px, 10vw, 60px) !important; }
+      .hero-bottom { flex-direction: column; gap: 1.5rem; padding: 0 1.5rem; }
+      
+      /* Crew: image on top, info below */
+      .tc, .tc:nth-child(even) {
+        flex-direction: column !important;
+        min-height: auto !important;
+        max-height: none !important;
       }
-
       .tc-img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+        width: 100% !important;
+        height: 280px !important;
+        position: relative !important;
       }
-
       .tc-gradient-overlay {
-        background: linear-gradient(to top, var(--ink) 0%, rgba(10, 10, 10, 0.85) 50%, transparent 100%);
+        background: linear-gradient(to bottom, transparent 40%, var(--ink) 100%) !important;
       }
-
       .tc-info {
-        width: 100%;
-        height: 100%;
-        padding: 2rem 2.8rem;
-        justify-content: flex-end;
-        padding-top: 15rem;
-        /* force text down */
+        width: 100% !important;
+        padding: 2rem 1.8rem !important;
       }
-
-      .code-ribbons {
-        transform: rotate(-5deg) scale(0.8);
+      .tc-name { font-size: 28px !important; }
+      .tc-bio { font-size: 14px !important; }
+      
+      /* About + CTA: stack vertically */
+      .combined-about-cta {
+        flex-direction: column !important;
+        min-height: auto !important;
       }
+      .combined-about-cta > div[style*="width: 1px"] { display: none !important; }
+      .combined-about-cta > div[style*="flex: 1"] {
+        padding: 5rem 1.8rem !important;
+        min-width: 100% !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
+      
+      /* Footer inside about */
+      .combined-about-cta > div[style*="bottom: 0"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+        padding: 1.5rem !important;
+      }
+      
+      /* Stats row */
+      .stats-row { flex-wrap: wrap; gap: 1rem; padding: 2rem 1.5rem; }
+      
+      /* Section padding */
+      .section { padding: 4rem 1.5rem; }
+      .sec-title { font-size: clamp(32px, 8vw, 48px) !important; }
+      
+      /* Scramble hero text */
+      #scramble-text { font-size: clamp(36px, 10vw, 70px) !important; }
     }
+    
+    @media (max-width: 480px) {
+      .tc-img { height: 220px !important; }
+      .hero-bottom-right { flex-direction: column; gap: 0.5rem; }
+      .ach-card { flex-direction: column !important; }
+      .ach-img { width: 100% !important; height: 200px !important; }
+    }
+    /* ============ SMOOTH GLOBAL ANIMATIONS ============ */
+    html { scroll-behavior: smooth; }
+    
+    * { transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.vis {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .tc:hover .tc-img img { transform: scale(1.03); }
+    
+    a, button { transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
     html {
       background-color: var(--ink) !important;
@@ -1073,7 +1127,7 @@
 
         <!-- HERO IMAGE -->
 
-        <img src="cd.jpeg" alt="Geek Coders Hero"
+        <img src="cd.webp" alt="Geek Coders Hero"
           style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1;">
 
 
@@ -1183,7 +1237,7 @@
 
       <div class="ach-card reveal">
         <div class="ach-img">
-          <img src="cd2.jpeg" alt="DBA Internship">
+          <img src="cd2.webp" alt="DBA Internship">
         </div>
         <div class="ach-gradient-overlay"></div>
         <div class="ach-info">
@@ -1212,7 +1266,7 @@
 
       <div class="tc reveal">
         <div class="tc-img">
-          <img src="cd3.jpeg" alt="ASHWIN - President" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd3.webp" alt="ASHWIN - President" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         <div class="tc-info" style="position: relative; overflow: hidden;">
@@ -1234,7 +1288,7 @@
       
       <div class="tc reveal d1">
         <div class="tc-img">
-          <img src="cd4.jpeg" alt="SURIYAA" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd4.webp" alt="SURIYAA" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
@@ -1252,7 +1306,7 @@
 
       <div class="tc reveal d2">
         <div class="tc-img">
-          <img src="cd7.jpeg" alt="HEM CHUDESH" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd7.webp" alt="HEM CHUDESH" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
@@ -1270,7 +1324,7 @@
 
       <div class="tc reveal d2">
         <div class="tc-img">
-          <img src="cd8.jpeg" alt="VIHAS" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd8.webp" alt="VIHAS" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
@@ -1288,7 +1342,7 @@
 
       <div class="tc reveal d3">
         <div class="tc-img">
-          <img src="cd4.jpeg" alt="JANANI" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd4.webp" alt="JANANI" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
@@ -1306,7 +1360,7 @@
 
       <div class="tc reveal d3">
         <div class="tc-img">
-          <img src="cd6.jpeg" alt="THEJASRI" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="cd6.webp" alt="THEJASRI" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="tc-gradient-overlay"></div>
         
@@ -1357,19 +1411,18 @@
       <h2 class="cta-title reveal d1" style="font-size: clamp(56px, 8vw, 110px); line-height: 1; letter-spacing: -0.04em; margin-bottom: 4rem; text-align: right;">BUILD.<br>COMPETE.<br>WIN.</h2>
       <button class="cta-btn reveal d2" style="padding: 1.25rem 3.5rem; font-size: 1rem; border-radius: 9999px; cursor: pointer; transition: 0.4s ease; background-color: var(--neo); color: var(--ink); border: none; font-weight: 600; text-transform: uppercase;">Apply Now →</button>
     </div>
+  
+    <!-- FOOTER (merged into about section) -->
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 2rem 5%; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div style="font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 900; letter-spacing: 0.08em; color: rgba(240,237,230,0.5);">Geek Coders</div>
+      <ul style="display: flex; gap: 2rem; list-style: none;">
+        <li><a href="#" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,237,230,0.35); text-decoration: none; transition: color 0.3s;">GitHub</a></li>
+        <li><a href="#" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,237,230,0.35); text-decoration: none; transition: color 0.3s;">Instagram</a></li>
+        <li><a href="#" style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,237,230,0.35); text-decoration: none; transition: color 0.3s;">LinkedIn</a></li>
+      </ul>
+      <div style="font-size: 11px; letter-spacing: 0.08em; color: rgba(240,237,230,0.25);">© 2025 · Your College Name</div>
+    </div>
   </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="f-logo">Geek Coders</div>
-    <ul class="f-links">
-      <li><a href="#">GitHub</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">LinkedIn</a></li>
-    </ul>
-    <div class="f-copy">© 2025 · Your College Name</div>
-  </footer>
 
   <script>
     const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }), { threshold: .12 });
@@ -1623,8 +1676,8 @@ void main(){
         for (let i = 0; i < length; i++) {
           const from = oldText[i] || '';
           const to = newText[i] || '';
-          const start = Math.floor(Math.random() * 40);
-          const end = start + Math.floor(Math.random() * 40);
+          const start = Math.floor(Math.random() * 80);
+          const end = start + Math.floor(Math.random() * 80);
           this.queue.push({ from, to, start, end });
         }
         cancelAnimationFrame(this.frameRequest);
@@ -1672,7 +1725,7 @@ void main(){
         ];
         const next = () => {
           fx.setText(phrases[counter]).then(() => {
-            setTimeout(next, 2000);
+            setTimeout(next, 3500);
           });
           counter = (counter + 1) % phrases.length;
         };
