@@ -138,15 +138,17 @@
     }
 
     /* Atmospheric background */
+    
     .hero-photo-inner::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 120% 80% at 50% 110%, rgba(20, 18, 14, 0.0) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.1) 35%, rgba(10, 10, 10, 0.1) 65%, rgba(10, 10, 10, 0.75) 100%);
-      z-index: 2;
+        linear-gradient(180deg, #000000 0%, rgba(10, 10, 10, 0) 15%, rgba(10, 10, 10, 0) 85%, #000000 100%),
+        radial-gradient(ellipse 120% 80% at 50% 110%, rgba(0, 255, 204, 0.05) 0%, transparent 60%);
+      z-index: 3; /* Ensure it is above the image (z-index 1) and optional shader (z-index 2) */
     }
+
 
     /* GROUP SILHOUETTE — wide landscape arrangement */
     .group-scene {
@@ -241,18 +243,26 @@
     }
 
     /* bottom strip */
-    .hero-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 5;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 6rem 2.8rem 2rem;
-      background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0) 100%);
-    }
+    
+      .hero-bottom {
+        position: absolute !important;
+        bottom: 2.5rem !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        padding: 0 1.5rem !important;
+        z-index: 100 !important;
+      }
+      .hero-scroll-cue { display: none !important; }
+      .hero-bottom-right { 
+        display: flex !important; 
+        flex-direction: row !important; 
+        gap: 1.5rem !important;
+      }
+
 
     .hero-bottom-left {
       display: flex;
@@ -997,7 +1007,58 @@
 
       /* Mobile Hero Background Logic */
       .hero-photo img { display: none !important; }
-      #heroShaderContainer { display: block !important; }
+      
+      
+      
+      
+      
+      
+      #heroShaderContainer, #shaderLinesContainer {
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 2 !important; /* Above photo, below text */
+        pointer-events: none;
+        opacity: 1 !important;
+        background: #000000 !important; /* MASK THE SMOKE */
+        overflow: hidden;
+      }
+      .hero-big-text, .hero-sub-line, .hero-bottom {
+        position: relative;
+        z-index: 100 !important; /* Absolute top visibility */
+      }
+      .tc-info > div {
+        position: relative;
+        z-index: 100 !important;
+      }
+
+
+      .hero-big-text, .hero-sub-line, .hero-bottom {
+        position: relative;
+        z-index: 100 !important; /* Force text to the front */
+      }
+      .tc-info > div {
+        position: relative;
+        z-index: 100 !important; /* Force Crew names/bio to the front */
+      }
+      .hero-photo, .hero-photo-inner, .hero { 
+        background: transparent !important; /* Unmask the background fluid simulation */
+      }
+
+      .hero-photo, .hero-photo-inner, .hero { 
+        background: transparent !important; 
+      }
+
+      .hero-photo, .hero-photo-inner, .hero { 
+        background: transparent !important; 
+      }
+
+      .hero-photo, .hero-photo-inner, .hero { 
+        background: transparent !important; 
+      }
+
 
       /* About Section Mobile Spacing Fix */
       .combined-about-cta {
@@ -1159,7 +1220,52 @@
       }
     }
 
-  </style>
+  
+  @media (max-width: 768px) {
+    .mobile-only { display: block !important; }
+    .hero-big-text { line-height: 0.95 !important; }
+    .hero-text-wrap { padding-top: 10vh !important; }
+    .hero-sub-text { white-space: nowrap !important; }
+    .hero-bottom {
+      position: absolute !important;
+      bottom: 1.5rem !important;
+      left: 0 !important;
+      right: 0 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: flex-end !important;
+      padding: 0 1.5rem !important;
+      z-index: 100 !important;
+    }
+    .hero-scroll-cue { display: none !important; }
+    .hs-n { font-size: 18px !important; }
+    .hs-l { font-size: 8px !important; }
+    .stats-row { 
+      display: flex !important; 
+      flex-direction: column !important; 
+      padding: 2.5rem 0 !important;
+    }
+    .st-cell {
+      padding: 3.5rem 1.8rem !important;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(240, 237, 230, 0.08) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    .st-n { font-size: 68px !important; }
+    #heroShaderContainer {
+      display: block !important;
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 2 !important;
+      background: #000000 !important;
+    }
+  }
+  .mobile-only { display: none; }
+
+</style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 </head>
 
@@ -1199,6 +1305,7 @@
 
 
   <section class="hero">
+    <div id="heroShaderContainer"></div>
 
 
     <div class="hero-photo">
@@ -1222,7 +1329,7 @@
     <!-- BIG TEXT CENTRED -->
         <div class="hero-text-wrap">
       <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
-        <div class="hero-big-text layerize-text" style="position:relative; z-index: 10;">GEEK CODERS</div>
+        <div class="hero-big-text layerize-text" style="position:relative; z-index: 10;">GEEK<br class="mobile-only"> CODERS</div>
       </div>
 
       <div class="hero-sub-line">
@@ -2080,52 +2187,232 @@ void main(){
 </script>
 
 
-<script id="mobileShaderJS">
-document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth >= 768) return;
-    const container = document.getElementById('heroShaderContainer');
-    if (!container) return;
-    const vertexShader = `void main() { gl_Position = vec4( position, 1.0 ); }`;
-    const fragmentShader = `
-      #define TWO_PI 6.2831853072
-      #define PI 3.14159265359
-      precision highp float;
-      uniform vec2 resolution;
-      uniform float time;
-      void main(void) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="nativeShaderJS">
+(function() {
+    const shaders = {
+        'heroShaderContainer': { source: `
+precision highp float;
+uniform vec2 resolution;
+uniform float time;
+void main(void) {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+    float t = time * 0.05;
+    float lineWidth = 0.002;
+    vec3 color = vec3(0.0);
+    for(int j = 0; j < 3; j++){
+        for(int i = 0; i < 5; i++){
+            color[j] += lineWidth * float(i * i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 5.0 - length(uv) + mod(uv.x + uv.y, 0.2));
+        }
+    }
+    gl_FragColor = vec4(color, 1.0);
+}
+`, speed: 1.0 },
+        'shaderLinesContainer': { source: `
+precision highp float;
+uniform vec2 resolution;
+uniform float time;
+float random (in float x) { return fract(sin(x)*1e4); }
+float random (vec2 st) { return fract(sin(dot(st.xy, vec2(12.9898,78.233)))*43758.5453123); }
+void main(void) {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+    vec2 fMosaicScal = vec2(4.0, 2.0);
+    vec2 vScreenSize = vec2(256,256);
+    uv.x = floor(uv.x * vScreenSize.x / fMosaicScal.x) / (vScreenSize.x / fMosaicScal.x);
+    uv.y = floor(uv.y * vScreenSize.y / fMosaicScal.y) / (vScreenSize.y / fMosaicScal.y);       
+    float t = time*0.06+random(uv.x)*0.4;
+    float lineWidth = 0.0008;
+    vec3 color = vec3(0.0);
+    for(int j = 0; j < 3; j++){
+        for(int i=0; i < 5; i++){
+            color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*1.0 - length(uv));        
+        }
+    }
+    gl_FragColor = vec4(color[2],color[1],color[0],1.0); // BGR ordering from source
+}
+`, speed: 1.0 }
+    };
+
+    function initNativeShader(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const config = shaders[containerId];
+
+        const canvas = document.createElement('canvas');
+        container.innerHTML = '';
+        container.appendChild(canvas);
+
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) return;
+
+        const vsSource = "attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }";
+        const fsSource = config.source;
+
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        }
+
+        const program = gl.createProgram();
+        gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
+        gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+        gl.linkProgram(program);
+        gl.useProgram(program);
+
+        const buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+        const posAttrib = gl.getAttribLocation(program, "position");
+        gl.enableVertexAttribArray(posAttrib);
+        gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
+
+        const resLoc = gl.getUniformLocation(program, "resolution");
+        const timeLoc = gl.getUniformLocation(program, "time");
+
+        function render(now) {
+            if (canvas.width !== container.clientWidth || canvas.height !== container.clientHeight) {
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            gl.uniform2f(resLoc, canvas.width, canvas.height);
+            gl.uniform1f(timeLoc, now * 0.001 * config.speed);
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initNativeShader('heroShaderContainer');
+        initNativeShader('shaderLinesContainer');
+    });
+})();
+</script>
+
+
+
+<script id="v26MasterShaderJS">
+(function() {
+    const heroFrag = `
+    precision highp float;
+    uniform vec2 resolution;
+    uniform float time;
+    void main(void) {
         vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
-        float t = time*0.05;
+        float t = time * 0.05;
         float lineWidth = 0.002;
         vec3 color = vec3(0.0);
         for(int j = 0; j < 3; j++){
-          for(int i=0; i < 5; i++){
-            color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y, 0.2));
-          }
+            for(int i = 0; i < 5; i++){
+                color[j] += lineWidth * float(i * i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 5.0 - length(uv) + mod(uv.x + uv.y, 0.2));
+            }
         }
-        gl_FragColor = vec4(color[0],color[1],color[2],1.0);
-      }
+        gl_FragColor = vec4(color, 1.0);
+    }
     `;
-    const camera = new THREE.Camera(); camera.position.z = 1;
-    const scene = new THREE.Scene();
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const uniforms = { time: { type: "f", value: 1.0 }, resolution: { type: "v2", value: new THREE.Vector2() } };
-    const material = new THREE.ShaderMaterial({ uniforms, vertexShader, fragmentShader });
-    const mesh = new THREE.Mesh(geometry, material); scene.add(mesh);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    container.appendChild(renderer.domElement);
-    const resize = () => {
-      renderer.setSize(container.clientWidth || window.innerWidth, container.clientHeight || window.innerHeight);
-      if (uniforms.resolution.value) {
-        uniforms.resolution.value.x = renderer.domElement.width;
-        uniforms.resolution.value.y = renderer.domElement.height;
-      }
+
+    const crewFrag = `
+    precision highp float;
+    uniform vec2 resolution;
+    uniform float time;
+    float random (in float x) { return fract(sin(x)*1e4); }
+    float random (vec2 st) { return fract(sin(dot(st.xy, vec2(12.9898,78.233)))*43758.5453123); }
+    void main(void) {
+        vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+        vec2 fMosaicScal = vec2(4.0, 2.0);
+        vec2 vScreenSize = vec2(256,256);
+        uv.x = floor(uv.x * vScreenSize.x / fMosaicScal.x) / (vScreenSize.x / fMosaicScal.x);
+        uv.y = floor(uv.y * vScreenSize.y / fMosaicScal.y) / (vScreenSize.y / fMosaicScal.y);       
+        float t = time*0.06+random(uv.x)*0.4;
+        float lineWidth = 0.0008;
+        vec3 color = vec3(0.0);
+        for(int j = 0; j < 3; j++){
+            for(int i=0; i < 5; i++){
+                color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*1.0 - length(uv));        
+            }
+        }
+        gl_FragColor = vec4(color[2],color[1],color[0],1.0);
+    }
+    `;
+
+    const shaders = {
+        'heroShaderContainer': { source: heroFrag, speed: 1.0 },
+        'shaderLinesContainer': { source: crewFrag, speed: 1.4 }
     };
-    resize(); window.addEventListener("resize", resize);
-    const animate = () => { requestAnimationFrame(animate); uniforms.time.value += 0.05; renderer.render(scene, camera); };
-    animate();
-});
+
+    function initNativeShader(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const config = shaders[containerId];
+        const canvas = document.createElement('canvas');
+        container.innerHTML = '';
+        container.appendChild(canvas);
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) return;
+        const vsSource = "attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }";
+        const fsSource = config.source;
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        }
+        const program = gl.createProgram();
+        gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
+        gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+        gl.linkProgram(program);
+        gl.useProgram(program);
+        const buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+        const posAttrib = gl.getAttribLocation(program, "position");
+        gl.enableVertexAttribArray(posAttrib);
+        gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
+        const resLoc = gl.getUniformLocation(program, "resolution");
+        const timeLoc = gl.getUniformLocation(program, "time");
+        function render(now) {
+            if (canvas.width !== container.clientWidth || canvas.height !== container.clientHeight) {
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            gl.uniform2f(resLoc, canvas.width, canvas.height);
+            gl.uniform1f(timeLoc, now * 0.001 * config.speed);
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        initNativeShader('heroShaderContainer');
+        initNativeShader('shaderLinesContainer');
+    });
+})();
 </script>
+
 </body>
 
 </html>
