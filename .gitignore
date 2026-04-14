@@ -1,0 +1,8 @@
+# Ignore all helper/build scripts
+*.js
+*.py
+
+# Ignore git internals
+.git
+
+# Keep only site files (handled by git add specifically)
