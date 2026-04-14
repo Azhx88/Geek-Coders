@@ -994,6 +994,21 @@
       
       /* Scramble hero text */
       #scramble-text { font-size: clamp(36px, 10vw, 70px) !important; }
+
+      /* Mobile Hero Background Logic */
+      .hero-photo img { display: none !important; }
+      #heroShaderContainer { display: block !important; }
+
+      /* About Section Mobile Spacing Fix */
+      .combined-about-cta > div[style*="flex: 1"] {
+        padding: 4rem 1.8rem !important;
+        min-width: 100% !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .combined-about-cta h2 { text-align: center !important; }
+      .combined-about-cta p { text-align: center !important; margin-left: auto; margin-right: auto; }
+      .combined-about-cta .sec-label { align-self: center !important; }
     }
     
     @media (max-width: 480px) {
@@ -1209,7 +1224,7 @@
 
       <div class="hero-sub-line">
         <div class="hero-sub-divider"></div>
-        <span class="hero-sub-text">Tech Club &nbsp;·&nbsp; Est. 2018 &nbsp;·&nbsp; KRCT</span>
+        <span class="hero-sub-text">Tech Club &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; KRCT</span>
         <div class="hero-sub-divider"></div>
       </div>
     </div>
