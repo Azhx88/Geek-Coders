@@ -1105,81 +1105,7 @@
       }
     }
   
-    /* Crew card glow borders - STRONG */
-    .team-grid .tc {
-      border: 2px solid rgba(255,255,255,0.06);
-      border-radius: 1rem;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-      overflow: hidden;
-    }
-    /* Ashwin - Neon Cyan */
-    .team-grid .tc:nth-child(1) {
-      border-color: rgba(0, 255, 204, 0.4);
-      box-shadow: 0 0 25px rgba(0, 255, 204, 0.15), inset 0 0 25px rgba(0, 255, 204, 0.06);
-    }
-    .team-grid .tc:nth-child(1):hover {
-      border-color: rgba(0, 255, 204, 0.7);
-      box-shadow: 0 0 40px rgba(0, 255, 204, 0.3), inset 0 0 40px rgba(0, 255, 204, 0.1);
-    }
-    /* Suriyaa - Neon Rose */
-    .team-grid .tc:nth-child(2) {
-      border-color: rgba(230, 50, 128, 0.4);
-      box-shadow: 0 0 25px rgba(230, 50, 128, 0.15), inset 0 0 25px rgba(230, 50, 128, 0.06);
-    }
-    .team-grid .tc:nth-child(2):hover {
-      border-color: rgba(230, 50, 128, 0.7);
-      box-shadow: 0 0 40px rgba(230, 50, 128, 0.3), inset 0 0 40px rgba(230, 50, 128, 0.1);
-    }
-    /* Hem Chudesh - Electric Blue */
-    .team-grid .tc:nth-child(3) {
-      border-color: rgba(50, 100, 255, 0.4);
-      box-shadow: 0 0 25px rgba(50, 100, 255, 0.15), inset 0 0 25px rgba(50, 100, 255, 0.06);
-    }
-    .team-grid .tc:nth-child(3):hover {
-      border-color: rgba(50, 100, 255, 0.7);
-      box-shadow: 0 0 40px rgba(50, 100, 255, 0.3), inset 0 0 40px rgba(50, 100, 255, 0.1);
-    }
-    /* Vihas - Amber Gold */
-    .team-grid .tc:nth-child(4) {
-      border-color: rgba(255, 153, 0, 0.4);
-      box-shadow: 0 0 25px rgba(255, 153, 0, 0.15), inset 0 0 25px rgba(255, 153, 0, 0.06);
-    }
-    .team-grid .tc:nth-child(4):hover {
-      border-color: rgba(255, 153, 0, 0.7);
-      box-shadow: 0 0 40px rgba(255, 153, 0, 0.3), inset 0 0 40px rgba(255, 153, 0, 0.1);
-    }
-    /* Janani - Vivid Purple */
-    .team-grid .tc:nth-child(5) {
-      border-color: rgba(178, 25, 255, 0.4);
-      box-shadow: 0 0 25px rgba(178, 25, 255, 0.15), inset 0 0 25px rgba(178, 25, 255, 0.06);
-    }
-    .team-grid .tc:nth-child(5):hover {
-      border-color: rgba(178, 25, 255, 0.7);
-      box-shadow: 0 0 40px rgba(178, 25, 255, 0.3), inset 0 0 40px rgba(178, 25, 255, 0.1);
-    }
-    /* Thejasri - Crimson Red */
-    .team-grid .tc:nth-child(6) {
-      border-color: rgba(255, 50, 50, 0.4);
-      box-shadow: 0 0 25px rgba(255, 50, 50, 0.15), inset 0 0 25px rgba(255, 50, 50, 0.06);
-    }
-    .team-grid .tc:nth-child(6):hover {
-      border-color: rgba(255, 50, 50, 0.7);
-      box-shadow: 0 0 40px rgba(255, 50, 50, 0.3), inset 0 0 40px rgba(255, 50, 50, 0.1);
-    }
-    /* Nagulan - Neon Green */
-    .team-grid .tc:nth-child(7) {
-      border-color: rgba(0, 255, 100, 0.4);
-      box-shadow: 0 0 25px rgba(0, 255, 100, 0.15), inset 0 0 25px rgba(0, 255, 100, 0.06);
-    }
-    .team-grid .tc:nth-child(7):hover {
-      border-color: rgba(0, 255, 100, 0.7);
-      box-shadow: 0 0 40px rgba(0, 255, 100, 0.3), inset 0 0 40px rgba(0, 255, 100, 0.1);
-    }
-  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
-
-
-
+    </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 </head>
 
@@ -1191,10 +1117,10 @@
   <nav>
     <a class="nav-logo" href="#">GC</a>
     <ul class="nav-links">
-      <li><a href="#">About</a></li>
+      <li><a href="#">GC</a></li>
       <li><a href="#achievements">EVENTS</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#">Events</a></li>
+      <li><a href="#team">CREW</a></li>
+      <li><a href="#about">ABOUT</a></li>
     </ul>
     <div class="nav-right">
       <button class="nav-btn">Join Now</button>
@@ -1363,7 +1289,7 @@
 
     <div class="team-grid">
 
-      <div class="tc reveal">
+      <div class="tc reveal" style="--accent: #00ff64; --accent-glow: rgba(0, 255, 100, 0.4); --accent-faint: rgba(0, 255, 100, 0.15); --accent: #ff3232; --accent-glow: rgba(255, 50, 50, 0.4); --accent-faint: rgba(255, 50, 50, 0.15); --accent: #b219ff; --accent-glow: rgba(178, 25, 255, 0.4); --accent-faint: rgba(178, 25, 255, 0.15); --accent: #ff9900; --accent-glow: rgba(255, 153, 0, 0.4); --accent-faint: rgba(255, 153, 0, 0.15); --accent: #3264ff; --accent-glow: rgba(50, 100, 255, 0.4); --accent-faint: rgba(50, 100, 255, 0.15); --accent: #e63280; --accent-glow: rgba(230, 50, 128, 0.4); --accent-faint: rgba(230, 50, 128, 0.15); --accent: #00ffcc; --accent-glow: rgba(0, 255, 204, 0.4); --accent-faint: rgba(0, 255, 204, 0.15); --accent: #00ffcc; --accent-glow: rgba(0, 255, 204, 0.4); --accent-faint: rgba(0, 255, 204, 0.15);">
         <div class="tc-img">
           <img src="cd3.webp" loading="lazy" decoding="async" alt="ASHWIN - President" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -1385,7 +1311,7 @@
       </div>
 
       
-      <div class="tc reveal d1">
+      <div class="tc reveal d1" style="--accent: #e63280; --accent-glow: rgba(230, 50, 128, 0.4); --accent-faint: rgba(230, 50, 128, 0.15);">
         <div class="tc-img">
           <img src="cd4.webp" loading="lazy" decoding="async" alt="SURIYAA" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -1403,7 +1329,7 @@
         </div>
       </div>
 
-      <div class="tc reveal d2">
+      <div class="tc reveal d2" style="--accent: #3264ff; --accent-glow: rgba(50, 100, 255, 0.4); --accent-faint: rgba(50, 100, 255, 0.15);">
         <div class="tc-img">
           <img src="cd7.webp" loading="lazy" decoding="async" alt="HEM CHUDESH" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -1421,7 +1347,7 @@
         </div>
       </div>
 
-      <div class="tc reveal d2">
+      <div class="tc reveal d2" style="--accent: #3264ff; --accent-glow: rgba(50, 100, 255, 0.4); --accent-faint: rgba(50, 100, 255, 0.15);">
         <div class="tc-img">
           <img src="cd8.webp" loading="lazy" decoding="async" alt="VIHAS" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -1771,7 +1697,7 @@ void main(){
           let { from, to, start, end, char } = this.queue[i];
           if (this.frame >= end) {
             complete++;
-            output += (to === '\n') ? '<br>' : `<span style="color: white; text-shadow: 0 0 10px #00ffcc, 0 0 30px rgba(0,255,204,0.4), 0 0 60px rgba(0,255,204,0.15);">${to}</span>`;
+            output += (to === '\n') ? '<br>' : `<span style="color: white; text-shadow: 0 0 10px var(--accent, #00ffcc), 0 0 30px var(--accent-glow, rgba(0,255,204,0.4)), 0 0 60px var(--accent-faint, rgba(0,255,204,0.15));">${to}</span>`;
           } else if (this.frame >= start) {
             if (!char || Math.random() < 0.28) {
               char = this.chars[Math.floor(Math.random() * this.chars.length)];
