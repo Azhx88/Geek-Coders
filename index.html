@@ -148,7 +148,7 @@
       background:
         linear-gradient(180deg, #000000 0%, rgba(10, 10, 10, 0) 15%, rgba(10, 10, 10, 0) 85%, #000000 100%),
         radial-gradient(ellipse 120% 80% at 50% 110%, rgba(0, 255, 204, 0.05) 0%, transparent 60%);
-      z-index: 3; /* Ensure it is above the image (z-index 1) and optional shader (z-index 2) */
+      z-index: 3;
     }
 
 
@@ -967,7 +967,11 @@
         position: relative !important;
       }
       .tc-gradient-overlay {
-        background: linear-gradient(to bottom, transparent 40%, var(--ink) 100%) !important;
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.85) 0%, transparent 30%),
+          linear-gradient(0deg,   rgba(0,0,0,0.95) 0%, transparent 45%),
+          linear-gradient(90deg,  rgba(0,0,0,0.6)  0%, transparent 25%),
+          linear-gradient(270deg, rgba(0,0,0,0.6)  0%, transparent 25%) !important;
       }
       .tc-info {
         width: 100% !important;
@@ -1009,22 +1013,17 @@
 
       /* Mobile Hero Background Logic */
       .hero-photo img { display: none !important; }
-      
-      
-      
-      
-      
-      
+
       #heroShaderContainer, #shaderLinesContainer {
         display: block !important;
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        z-index: 2 !important; /* Above photo, below text */
+        z-index: 2 !important;
         pointer-events: none;
         opacity: 1 !important;
-        background: #000000 !important; /* MASK THE SMOKE */
+        background: #000000 !important;
         overflow: hidden;
       }
       .hero-big-text, .hero-sub-line, .hero-bottom {
@@ -1168,7 +1167,12 @@
         width: 100% !important;
       }
       .ach-gradient-overlay {
-        display: none !important;
+        display: block !important;
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 28%),
+          linear-gradient(0deg,   rgba(0,0,0,0.95) 0%, transparent 45%),
+          linear-gradient(90deg,  rgba(0,0,0,0.75) 0%, transparent 30%),
+          linear-gradient(270deg, rgba(0,0,0,0.75) 0%, transparent 30%) !important;
       }
     }
   
@@ -1319,7 +1323,7 @@
       <li><a href="#about">ABOUT</a></li>
     </ul>
     <div class="nav-right">
-      <button class="nav-btn">Join Now</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJaFaciYQO3E_a11g4SxChaIDoGspz6cULDuLo7g5USxkbOg/viewform?usp=publish-editor" target="_blank" rel="noopener" class="nav-btn" style="text-decoration:none;">Join Now</a>
     </div>
   </nav>
 
@@ -1849,7 +1853,7 @@
     <div class="ab-right">
       <div class="cta-label reveal" style="text-transform: uppercase; font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.3em; margin-bottom: 2rem; color: #00ffcc; text-align: right;">Applications Open — Every Semester</div>
       <h2 class="cta-title reveal d1" style="font-size: clamp(56px, 8vw, 110px); line-height: 1; letter-spacing: -0.04em; margin-bottom: 4rem; text-align: right;">BUILD.<br>COMPETE.<br>WIN.</h2>
-      <button class="cta-btn reveal d2" style="padding: 1.25rem 3.5rem; font-size: 1rem; border-radius: 9999px; cursor: pointer; transition: 0.4s ease; background-color: var(--neo); color: var(--ink); border: none; font-weight: 600; text-transform: uppercase;">Apply Now →</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJaFaciYQO3E_a11g4SxChaIDoGspz6cULDuLo7g5USxkbOg/viewform?usp=publish-editor" target="_blank" rel="noopener" class="cta-btn reveal d2" style="padding: 1.25rem 3.5rem; font-size: 1rem; border-radius: 9999px; cursor: pointer; transition: 0.4s ease; background-color: var(--neo); color: var(--ink); border: none; font-weight: 600; text-transform: uppercase; text-decoration: none; display: inline-block;">Apply Now →</a>
     </div>
   
     <!-- FOOTER (merged into about section) -->
@@ -2118,8 +2122,8 @@ void main(){
         for (let i = 0; i < length; i++) {
           const from = oldText[i] || '';
           const to = newText[i] || '';
-          const start = Math.floor(Math.random() * 80);
-          const end = start + Math.floor(Math.random() * 80);
+          const start = Math.floor(Math.random() * 30);
+          const end = start + Math.floor(Math.random() * 30);
           this.queue.push({ from, to, start, end });
         }
         cancelAnimationFrame(this.frameRequest);
@@ -2150,7 +2154,7 @@ void main(){
           this.resolve();
         } else {
           this.frameRequest = requestAnimationFrame(this.update);
-          this.frame++;
+          this.frame += 2;
         }
       }
     }
@@ -2167,7 +2171,7 @@ void main(){
         ];
         const next = () => {
           fx.setText(phrases[counter]).then(() => {
-            setTimeout(next, 3500);
+            setTimeout(next, 700);
           });
           counter = (counter + 1) % phrases.length;
         };
@@ -2538,7 +2542,7 @@ void main(){
         vec3 color = vec3(0.0);
         for(int j = 0; j < 3; j++){
             for(int i = 0; i < 5; i++){
-                color[j] += lineWidth * float(i * i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 5.0 - length(uv) + mod(uv.x + uv.y, 0.2));
+                color[j] += lineWidth * float(i * i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 2.0 - length(uv) + mod(uv.x + uv.y, 0.2));
             }
         }
         gl_FragColor = vec4(color, 1.0);
