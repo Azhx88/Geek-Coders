@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(mv cd.webp cd_original_backup.webp)",
+      "Bash(mv cd_opt.webp cd.webp)",
+      "Bash(rm -f cd_compressed.webp)",
+      "Read(//c/c/Users/ashwi/Downloads/GEEK CODERS/**)",
+      "Bash(mv cd_new.webp cd.webp)",
+      "Bash(mv cd2_new.webp cd2.webp)",
+      "Bash(rm -f cd_final.webp)",
+      "Bash(mv cd_final.webp cd.webp)",
+      "Bash(rm -f cd_new.webp)"
+    ]
+  }
+}

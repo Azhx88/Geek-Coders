@@ -2075,7 +2075,7 @@ void main(){
         const mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(1);
         container.appendChild(renderer.domElement);
         let lastWidth = -1, lastHeight = -1;
         const animate = () => {
@@ -2289,7 +2289,8 @@ void main(){
     const noise = createNoise();
     
     // Config explicitly matched to React framework values
-    const particleCount = (navigator.hardwareConcurrency || 4) >= 8 ? 2000 : 600;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const particleCount = isMobile ? 300 : 1000;
     const noiseIntensity = 0.003;
     const particleSizeObj = { min: 0.5, max: 2 };
     
@@ -2351,8 +2352,12 @@ void main(){
         ctx.fill();
       }
 
-      requestAnimationFrame(animate);
+      if (!document.hidden && heroVisible) requestAnimationFrame(animate);
+      else setTimeout(() => requestAnimationFrame(animate), 300);
     };
+
+    let heroVisible = true;
+    new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }, { threshold: 0 }).observe(canvas);
 
     animate();
   });
