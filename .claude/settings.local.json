@@ -10,7 +10,9 @@
       "Bash(mv cd2_new.webp cd2.webp)",
       "Bash(rm -f cd_final.webp)",
       "Bash(mv cd_final.webp cd.webp)",
-      "Bash(rm -f cd_new.webp)"
+      "Bash(rm -f cd_new.webp)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(awk '{printf \"%s KB\\\\t%s\\\\n\", int\\($5/1024\\), $NF}')"
     ]
   }
 }
