@@ -12,7 +12,9 @@
       "Bash(mv cd_final.webp cd.webp)",
       "Bash(rm -f cd_new.webp)",
       "Bash(awk '{print $5, $9}')",
-      "Bash(awk '{printf \"%s KB\\\\t%s\\\\n\", int\\($5/1024\\), $NF}')"
+      "Bash(awk '{printf \"%s KB\\\\t%s\\\\n\", int\\($5/1024\\), $NF}')",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
