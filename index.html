@@ -1101,7 +1101,9 @@
                   transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease; }
+    img:not(.img-loaded) { opacity: 0; }
+    img.img-loaded { opacity: 1; }
     .tc:hover .tc-img img { transform: scale(1.03); }
     
     a, button { transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -1880,6 +1882,15 @@
     const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     setTimeout(() => document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vis'); }), 100);
+
+    document.querySelectorAll('img').forEach(img => {
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('img-loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('img-loaded'));
+        img.addEventListener('error', () => img.classList.add('img-loaded'));
+      }
+    });
   </script>
 
   <script>
@@ -1903,7 +1914,8 @@ void main(){
   col.r-=fbm(uv+vec2(0.0,T*0.015)+n);
   col.g-=fbm(uv*1.003+vec2(0.0,T*0.015)+n+0.003);
   col.b-=fbm(uv*1.006+vec2(0.0,T*0.015)+n+0.006);
-  col=mix(col,u_color,dot(col,vec3(0.21,0.71,0.07)));
+  vec3 c_safe=mix(vec3(0.0,1.0,0.8),u_color,step(0.01,length(u_color)));
+  col=mix(col,c_safe,dot(col,vec3(0.21,0.71,0.07)));
   col=mix(vec3(0.08),col,min(time*2.0,1.0));
   col=clamp(col,0.08,1.0);
   float alpha=length(col)-0.2;
@@ -1938,7 +1950,8 @@ void main(){
   col.g-=fbm(uv*1.003+vec2(0,T*.015)+n+.003);
   col.b-=fbm(uv*1.006+vec2(0,T*.015)+n+.006);
 
-  col=mix(col, u_color, dot(col,vec3(.21,.71,.07)));
+  vec3 c_safe=mix(vec3(0.,1.,.8),u_color,step(0.01,length(u_color)));
+  col=mix(col,c_safe,dot(col,vec3(.21,.71,.07)));
 
   col=mix(vec3(.08),col,min(time*2.,1.));
   col=clamp(col,.08,1.);
@@ -2403,7 +2416,8 @@ void main(){
   col.r-=fbm(uv+vec2(0,T*.015)+n);
   col.g-=fbm(uv*1.003+vec2(0,T*.015)+n+.003);
   col.b-=fbm(uv*1.006+vec2(0,T*.015)+n+.006);
-  col=mix(col, u_color, dot(col,vec3(.21,.71,.07)));
+  vec3 c_safe=mix(vec3(0.,1.,.8),u_color,step(0.01,length(u_color)));
+  col=mix(col,c_safe,dot(col,vec3(.21,.71,.07)));
   col=mix(vec3(.08),col,min(time*2.,1.));
   col=clamp(col,.08,1.);
   float alpha = length(col) - 0.2;
@@ -2430,7 +2444,8 @@ void main(){
   col.r-=fbm(uv+vec2(0.0,T*0.015)+n);
   col.g-=fbm(uv*1.003+vec2(0.0,T*0.015)+n+0.003);
   col.b-=fbm(uv*1.006+vec2(0.0,T*0.015)+n+0.006);
-  col=mix(col,u_color,dot(col,vec3(0.21,0.71,0.07)));
+  vec3 c_safe=mix(vec3(0.0,1.0,0.8),u_color,step(0.01,length(u_color)));
+  col=mix(col,c_safe,dot(col,vec3(0.21,0.71,0.07)));
   col=mix(vec3(0.08),col,min(time*2.0,1.0));
   col=clamp(col,0.08,1.0);
   float alpha=length(col)-0.2;
